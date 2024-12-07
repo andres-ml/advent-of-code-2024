@@ -8,6 +8,7 @@ defmodule Day7 do
     end)
 
   def solvable?(result, carry, [], _), do: result == carry
+  def solvable?(result, carry, _, _) when carry > result, do: false
   def solvable?(result, carry, [operand | rest], operators), do: Enum.any?(
     operators,
     fn operator -> solvable?(result, operator.(carry, operand), rest, operators) end
