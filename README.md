@@ -1,4 +1,4 @@
-Elixir implementation of 2020's [Advent of Code](https://adventofcode.com/2020)
+Elixir implementation of 2024's [Advent of Code](https://adventofcode.com/2024)
 
 ## How to run
 
