@@ -9,8 +9,7 @@ defmodule Day1 do
   def one(lists), do: lists
     |> Enum.map(&Enum.sort/1)
     |> List.zip()
-    |> Enum.map(fn {a, b} -> abs(b - a) end)
-    |> Enum.reduce(0, &Kernel.+/2)
+    |> Enum.reduce(0, fn {a, b}, carry -> carry + abs(b - a) end)
 
   def two([left, right]) do
     frequencies = Enum.frequencies(right)
