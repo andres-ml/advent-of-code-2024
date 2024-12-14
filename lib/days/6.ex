@@ -9,10 +9,10 @@ defmodule Day6 do
     else
       visited = Map.put(visited, guard, [direction | directions])
       {nextGuard = {nextI, nextJ}, nextDirection} = case direction do
-        "^" -> {{i, j - 1}, ">"}
-        ">" -> {{i + 1, j}, "v"}
-        "v" -> {{i, j + 1}, "<"}
-        "<" -> {{i - 1, j}, "^"}
+        "^" -> {{i - 1, j}, ">"}
+        ">" -> {{i, j + 1}, "v"}
+        "v" -> {{i + 1, j}, "<"}
+        "<" -> {{i, j - 1}, "^"}
       end
       if nextI < 0 or nextI >= gridSize or nextJ < 0 or nextJ >= gridSize do
         visited
@@ -27,8 +27,8 @@ defmodule Day6 do
 
   def one(grid) do
     direction = "^"
-    j = Enum.find_index(grid, &(direction in &1))
-    i = Enum.find_index(Enum.at(grid, j), &(&1 == direction))
+    i = Enum.find_index(grid, &(direction in &1))
+    j = Enum.find_index(Enum.at(grid, i), &(&1 == direction))
     guard = {i, j}
     grid
       |> move(Enum.count(grid), guard, direction, %{guard => []})
@@ -48,8 +48,8 @@ defmodule Day6 do
   # ...so brute force it is...
   def two(grid) do
     direction = "^"
-    j = Enum.find_index(grid, &(direction in &1))
-    i = Enum.find_index(Enum.at(grid, j), &(&1 == direction))
+    i = Enum.find_index(grid, &(direction in &1))
+    j = Enum.find_index(Enum.at(grid, i), &(&1 == direction))
     guard = {i, j}
     gridSize = Enum.count(grid)
     initialVisited = %{guard => []}
